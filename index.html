@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example for each CSS selectors reference</title>
+        <meta charset="UTF-8">
+        <style>
+            /* Style all elements to italic font-style  */
+            *{
+                font-style: italic;
+            }
+            /* Style all elements inside all <h2> and <p> */
+            h2, p{
+                font-size: small;
+            }
+            /* Style all element inside <div> */
+            div *{
+                text-decoration: underline;
+            }
+            /* Style all elements with id="binh0"*/
+            #binh0{
+                font-size: 30;
+            }
+            /* Select and style all elements with class="intro" */
+            .binh1{
+                background-color: aquamarine;
+            }
+            /* Style all <p> elements with class="binh2": */
+            p.binh2{
+                background-color: red;
+            }
+            /* Style all <p> elements with class="binh3" AND CLASS="binh3 binh4" */
+            p.binh3{
+                text-align: center;
+            }
+            /* Select and style every <p> element that is inside <div> elements */
+            div p {
+                background-color: yellow;
+            }
+            
+
+
+            /* May be more difficult from this line :D */
+            /* Select and style every <p> element where the parent is a <div> element: */
+            div > p {
+                color: purple;
+            }
+            /* Thay đổi thẻ <p> đầu tiên ngay sau thẻ </div> */
+            div + p{
+                background-color: aqua;
+            }
+            /* Thay đổi tất cả các thẻ ul sau thẻ p */
+            p ~ ul {
+                color: green;
+            /* Ví dụ về elements có attribute và attribute + value */
+            }
+            a[target]{
+                text-align: right;
+            }
+            a[target=_self]{
+                font-size: smaller;
+            }
+            /* Tất cả những attribute có value chỉ cần chứa chữ "binh" đều bị thay đổi cho dù là binhq */
+            a[title~=binh]{
+                color: brown;
+            }
+            /* [attribute |= value] giống y xì đúc ~= chỉ cần có chứa cụm từ trong value thì sẽ bị style */
+            p[lang|=en]{
+                text-align: center;
+            }
+            /*  ele[Attribute^="value"] Bị style khi bắt đầu bằng chữ "value". VD:
+                ele[Attribute$="value"] Bị style khi kết thúc bằng chữ "value". VD:
+                ele[Attribute*="value"] Bị style khi bao gồm chữ "value". VD:
+             */
+            div[class^="test"]{
+                text-align: end;
+            }
+            p[class$="test"]{
+                color: olive;
+            }
+            h2[class*="test"]{
+                background-color: blue;
+            }
+            /* ele:link (Không có tác dụng lắm)
+            ele:visited hoặc ele.class:visited Đã bị style rồi tương tự 
+            ele:hover hoặc ele.class:hover Bị style khi trỏ chuột vào nó
+            ele:active hoặc ele.active:active Bị style khi click vào nó */
+            p:visited{
+                color:aqua;
+            }
+            p:hover{
+                color: blueviolet;
+            }
+            p:active{
+                color: yellowgreen;
+            }
+
+            /* ele::after{content: "..."} và ele::before{content: "..."} chèn text trước/sau ele */
+            p#binh0::after{
+                content: "::after nè";
+            }
+            p#binh0::before{
+                content: "::before nè";
+            }
+            /* ele:checked style sau khi chọn xong ở ele chứa input hoặc option + select HTML */
+            /* input:default style mặc định cho 1 cái gì đó ở input */
+
+            /* ele:empty style 1 tag rỗng  */
+            /* enable với disabled  */
+            /* p:first-child Style element đầu tiên trong body, trong div   */
+            /* ÔI EM TỪ BỎ ĐÂY DÀI QUÁ HUHU */
+
+        </style>
+    </head>
+    
+
+    <body>
+    <!-- Demo of the .class selector and #id  -->
+        <div class="binh1">
+            <p>Hj my name is Binh</p>
+            <p>Hj my name is Binh</p>
+        </div>
+        <p id="binh0">Hj my nmae is Binh</p>
+        <p class="binh1">Hj my name is Binh</p>
+<hr>
+    <!-- Demo of the element.class selector  -->
+        <div class="binh2">
+            <p>Hj my name is Binh</p>
+            <p>Hj my name is Binh</p>
+        </div>
+        <p>Hj my nmae is Binh</p>
+        <p class="binh2">Hj my name is Binh</p>
+<hr>
+    <!-- Demo of the 2+ .class selectors  -->
+        <p class="binh3">Hj my name is Binh</p>
+        <h2 class="binh3">Hj my name is Binh</h2>
+        <p>Hj my nmae is Binh</p>
+        <p class="binh3 binh4">Hj my name is Binh</p>
+<hr>
+    <!-- Demo of ele > ele -->
+        <div>
+            <h2>My name is MeoMeo</h2>
+            <p>I live in HaNoi.</p>
+        </div>
+        <div>
+        <span><p>I will not be styled because my father is <span>, not <div>.</p></span>
+        </div>
+        <p>My best friend is Hong Anh.</p>
+<hr>    
+    <!-- Demo of ele ~ ele -->
+        <p>The first paragraph.</p>
+            <ul>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+            </ul>
+        <div>A div element.</div>
+            <ul>
+                <li>Coffee</li>
+                <li>Tea</li>
+                <li>Milk</li>
+            </ul>
+<hr>
+    <!-- Demo of ele[attribute] và ele[attribute=value] -->
+        <a href="https://www.youtube.com/watch?v=Vt4qYFB2cPo" title="binh">Youtube.com</a><br>
+        <a href="https://www.google.com" title="binhq" target="_self">Google.com</a><br>
+        <a href="https://www.microsoft.com" title="binqq" target="_blank">Microsoft.com</a>
+<hr>
+        <p lang="en">Hello!</p>
+        <p lang="en-us">Hi!</p>
+        <p lang="en-gb">Ello!</p>
+        <p lang="us">Hi!</p>
+        <p lang="no">Hei!</p>                
+<hr>
+        <div class="first_test">The first div element.</div>
+        <div class="second">The second div element.</div>
+        <div class="test">The third div element.</div>
+        <h2 class="test_ex">The 1st h2 element.</h2>
+        <h2 class="test_tt">The 2nd h2 element.</h2>
+        <p class="test">This is a paragraph.</p>
+        <p class="test_ex">This is a paragraph.</p>
+<hr>
+        <p>Mouse over and click the link: <a href="https://www.microsoft.com">Microsoft.com</a></p>
+        
+
+    </body>
+</html>
